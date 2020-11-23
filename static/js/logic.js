@@ -97,3 +97,32 @@ function create_map(earthquakes) {
         zoom: 1.5
     });
     
+// Legend
+var legend = L.control({ position: "bottomright" });
+legend.onAdd = function() {
+ 
+var mapColors = ["blue", "green", "yellow", "orange", "red", "purple"];
+ 
+    // Label range
+    var labels = ["-10 to 10 km", "10 to 30 km", "30 to 50 km", "50 to 70 km", "70 to 90 km", "90+ km"];
+    var list = '<ul style="list-style-type:none;"><li><b>Earthquake Depth</b></li>';
+    var div = L.DomUtil.create("div");
+ 
+    // Add li
+    labels.forEach(function(x, i) {
+        list += '<li>' + '<span style="color:' + mapColors[i] + '; background-color:' + mapColors[i] + '">box</span>' +
+        '<span style="color:black">' + '&nbsp&nbsp&nbsp' + labels[i] + '</span></li>';
+    });
+ 
+    div.innerHTML += list + "</ul>";
+    return div;
+  };
+
+  // Add legend
+  legend.addTo(myMap);
+
+  // Add layer control
+  L.control.layers(maps_layers, maps_overlay, {collapsed: false}).addTo(myMap);
+
+
+}

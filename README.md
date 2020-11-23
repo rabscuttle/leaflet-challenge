@@ -1,1 +1,3 @@
-# leaflet-challenge
+### Leaflet Challenge
+## Scott Rehn
+# Earthquake Mapping
